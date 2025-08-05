@@ -11,10 +11,13 @@ const MESSAGE_ERROR_OUT_OF_RANGE = 'ERRO: INVALID DATA. ONLY 0 TO 10 NUMBERS ARE
 const MESSAGE_NAN = 'ERRO: ALL GRADE FIELDS MUST BE FILLED IN WITH NUMBERS'
 const MESSAGE_INVALID_NAME ='ERRO: ONLY LETTERS ARE PERMITED IN NAME FIELD '
 // import biblioteca readline (Input Data)
-var readline = require('readline')
+const readline = require('readline')
+
+// import biblioteca para calcular media
+const schoolAverage = require('./modulo/media.js')
 
 // Criando um objeto de entrada e saida de dados no terminal
-var inputData = readline.createInterface({
+const inputData = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 })
@@ -51,16 +54,13 @@ inputData.question('Student Name: ', function(name){
                     }else if(Number(grade1) < 0 || Number(grade1) > 10 || Number(grade2) < 0 || Number(grade2) > 10 || Number(grade3) < 0 || Number(grade3) > 10 || Number(grade4) < 0 || Number(grade4) > 10){   
                         console.log(MESSAGE_ERROR_OUT_OF_RANGE)
                         }else{
-                            let average = (Number(grade1) + Number(grade2) + Number(grade3) + Number(grade4)) /4
-                            let studentStatus
-                            if(average >= 7 && average <= 10){
-                                studentStatus = 'Approved'
-                            }else if(average < 7 && average >= 5){
-                                studentStatus="Exam"
-                            }else if (average < 5 && average >= 0){
-                                studentStatus = "Failed"
+                            let average = schoolAverage.calculateAverage(grade1, grade2, grade3, grade4)
+                            let studentStatus = schoolAverage.verifyStatus(average)
+                            
+                            if (studentStatus){   
+                                console.log(`The student ${studentName} got ${average} in his final avarege ${studentStatus}`)
                             }
-                            console.log (`The student ${studentName} got ${average.toFixed(1)} in his final avarege ${studentStatus}`)
+                         
                         }
                 })
 
