@@ -60,7 +60,7 @@ inputData.question('Student Name: ', function(name){
                             }else if (avarage < 5 && avarage >= 0){
                                 studentStatus = "Failed"
                             }
-                            console.log (`The student ${studentName} got ${avarage.toFixed(1)} in his final avarege  ${studentStatus}`)
+                            console.log (`The student ${studentName} got ${avarage.toFixed(1)} in his final avarege ${studentStatus}`)
                         }
                 })
 
