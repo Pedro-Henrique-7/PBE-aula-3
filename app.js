@@ -4,6 +4,12 @@
 // Autor : Pedro Henrique Oliveira da Silva
 // Versão 1.0
 
+
+// Declarando variavel que possuem mensagem de erro
+const MESSAGE_ERROR_EMPTY = 'ERRO: ALL FILELDS MUST BE FILLED IN'
+const MESSAGE_ERROR_OUT_OF_RANGE = 'ERRO: INVALID DATA. ONLY 0 TO 10 NUMBERS ARE ALLOWED'
+const MESSAGE_NAN = 'ERRO: ALL GRADE FIELDS MUST BE FILLED IN WITH NUMBERS'
+const MESSAGE_INVALID_NAME ='ERRO: ONLY LETTERS ARE PERMITED IN NAME FIELD '
 // import biblioteca readline (Input Data)
 var readline = require('readline')
 
@@ -37,13 +43,13 @@ inputData.question('Student Name: ', function(name){
                     let grade4 = value4
 
                     if(studentName == '' || grade1 == '' || grade2 == '' || grade3 == '' || grade4 == ''){
-                        console.log('ERRO: É OBRIGATORIO O PREENCHIMENTO DE TODAS AS INFORMAÇÕES')
+                        console.log(MESSAGE_ERROR_EMPTY)
                     }else if(!isNaN(studentName)){
-                        console.log("ERRO: JUST LETTERS ARE PERMITED IN NAME FIELD ")
+                        console.log(MESSAGE_INVALID_NAME)
                     }else if(isNaN(grade1)  || isNaN(grade2)  || isNaN(grade3)  || isNaN(grade4) ) {
-                        console.log("ERRO: ALL FIELDS MUST BE FILLED IN")    
+                        console.log(MESSAGE_NAN)    
                     }else if(Number(grade1) < 0 || Number(grade1) > 10 || Number(grade2) < 0 || Number(grade2) > 10 || Number(grade3) < 0 || Number(grade3) > 10 || Number(grade4) < 0 || Number(grade4) > 10){   
-                        console.log("ERRO: INVALID DATA. ONLY 0 TO 10 NUMBERS ARE ALLOWED")
+                        console.log(MESSAGE_ERROR_OUT_OF_RANGE)
                         }else{
                             let avarage = (Number(grade1) + Number(grade2) + Number(grade3) + Number(grade4)) /4
                             let studentStatus
