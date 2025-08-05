@@ -51,16 +51,16 @@ inputData.question('Student Name: ', function(name){
                     }else if(Number(grade1) < 0 || Number(grade1) > 10 || Number(grade2) < 0 || Number(grade2) > 10 || Number(grade3) < 0 || Number(grade3) > 10 || Number(grade4) < 0 || Number(grade4) > 10){   
                         console.log(MESSAGE_ERROR_OUT_OF_RANGE)
                         }else{
-                            let avarage = (Number(grade1) + Number(grade2) + Number(grade3) + Number(grade4)) /4
+                            let average = (Number(grade1) + Number(grade2) + Number(grade3) + Number(grade4)) /4
                             let studentStatus
-                            if(avarage >= 7 && avarage <= 10){
+                            if(average >= 7 && average <= 10){
                                 studentStatus = 'Approved'
-                            }else if(avarage < 7 && avarage >= 5){
+                            }else if(average < 7 && average >= 5){
                                 studentStatus="Exam"
-                            }else if (avarage < 5 && avarage >= 0){
+                            }else if (average < 5 && average >= 0){
                                 studentStatus = "Failed"
                             }
-                            console.log (`The student ${studentName} got ${avarage.toFixed(1)} in his final avarege ${studentStatus}`)
+                            console.log (`The student ${studentName} got ${average.toFixed(1)} in his final avarege ${studentStatus}`)
                         }
                 })
 
